@@ -48,9 +48,11 @@ services:
       - /app/node_modules/
     # Nginx is used to proxy SSR requests thru docker networking
     command: sh -c '(nginx &) && npm run start'
+    env_file:
+      - common.env
     # 设置 API 地址的（Linux局域网地址）
-    environment:
-      - API_URI=http://192.168.150.243:8000/graphql/
+    # environment:
+    #   - API_URI=http://192.168.150.243:8000/graphql/
 
   dashboard:
     build:
