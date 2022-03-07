@@ -48,7 +48,10 @@ services:
       - ./saleor-storefront/:/app:cached
       - /app/node_modules/
     # Nginx is used to proxy SSR requests thru docker networking
-    command: sh -c '(nginx &) && npm run start'
+    # command: sh -c '(nginx &) && npm run start'
+
+    # 生产环境
+    command: sh -c '(nginx &) && npm run build:start'
     env_file:
       - common.env
 
