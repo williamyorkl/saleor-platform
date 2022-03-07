@@ -35,7 +35,8 @@ services:
   storefront:
     build:
       context: ./saleor-storefront
-      dockerfile: ./Dockerfile.dev
+      # dockerfile: ./Dockerfile.dev
+      dockerfile: ./Dockerfile  # 尝试非 dev 模式
     ports:
       - 3000:3000
     restart: unless-stopped
