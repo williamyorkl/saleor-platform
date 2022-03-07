@@ -30,7 +30,7 @@ services:
       - JAEGER_AGENT_HOST=jaeger
       - STOREFRONT_URL=http://localhost:3000/
       - DASHBOARD_URL=http://localhost:9000/
-      - ALLOWED_HOSTS=localhost,api,192.168.150.243
+      - ALLOWED_HOSTS=localhost,api,192.168.150.243,192.168.150.120
 
   storefront:
     build:
@@ -41,7 +41,7 @@ services:
       - 3000:3000
     restart: unless-stopped
     networks:
-      - saleor-backend-tier
+      - saleor-backend-tier192.168.150.120
     depends_on:
       - api
     volumes:
