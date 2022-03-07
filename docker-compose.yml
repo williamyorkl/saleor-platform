@@ -41,7 +41,7 @@ services:
       - 3000:3000
     restart: unless-stopped
     networks:
-      - saleor-backend-tier192.168.150.120
+      - saleor-backend-tier
     depends_on:
       - api
     volumes:
