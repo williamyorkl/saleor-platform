@@ -47,12 +47,9 @@ services:
       - ./saleor-storefront/:/app:cached
       - /app/node_modules/
     # Nginx is used to proxy SSR requests thru docker networking
-    command: sh -c '(nginx &) && npm run start'
+    command: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p && sh -c '(nginx &) && npm run start'
     env_file:
       - common.env
-    # 设置 API 地址的（Linux局域网地址）
-    # environment:
-    #   - API_URI=http://192.168.150.243:8000/graphql/
 
   dashboard:
     build:
