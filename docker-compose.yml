@@ -47,7 +47,7 @@ services:
       - ./saleor-storefront/:/app:cached
       - /app/node_modules/
     # Nginx is used to proxy SSR requests thru docker networking
-    command: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p && sh -c '(nginx &) && npm run start'
+    command: sh -c 'echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p && (nginx &) && npm run start'
     env_file:
       - common.env
 
