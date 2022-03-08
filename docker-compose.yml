@@ -35,8 +35,8 @@ services:
   storefront:
     build:
       context: ./saleor-storefront
-      # dockerfile: ./Dockerfile.dev
-      dockerfile: ./Dockerfile.dbg  # 测试环境
+      dockerfile: ./Dockerfile.dev  # 本地开发环境
+      # dockerfile: ./Dockerfile.dbg  # 测试环境
     ports:
       - 3000:3000
     restart: unless-stopped
