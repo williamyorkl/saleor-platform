@@ -80,10 +80,11 @@ services:
     volumes:
       - saleor-redis:/data
 
+  # TODO - 待研究这是什么服务
   worker:
     build:
       context: ./saleor
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dbg
       args:
         STATIC_URL: "/static/"
     command: celery -A saleor --app=saleor.celeryconf:app worker --loglevel=info -B
