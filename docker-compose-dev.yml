@@ -1,7 +1,5 @@
 version: "3.4"
 
-# TODO - 正式环境到时候应该会部署上云服务，配置有待修改
-
 services:
   api:
     ports:
@@ -37,27 +35,33 @@ services:
   storefront:
     build:
       context: ./saleor-storefront
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dev  # 本地开发环境
     ports:
-      - 80:80
+      - 3000:3000
     restart: unless-stopped
     networks:
       - saleor-backend-tier
     depends_on:
       - api
     volumes:
+      - ./saleor-storefront/:/app:cached
       - /app/node_modules/
+    # Nginx is used to proxy SSR requests thru docker networking
+    command: sh -c '(nginx &) && npm run start'
+    env_file:
+      - common.env
 
   dashboard:
     build:
       context: ./saleor-dashboard
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dev
     ports:
-      - 80:80
+      - 9000:9000
     restart: unless-stopped
     volumes:
       - ./saleor-dashboard/:/app:cached
       - /app/node_modules/
+    command: npm start -- --host 0.0.0.0
 
   db:
     image: library/postgres:11.1-alpine

@@ -67,7 +67,7 @@ $ git checkout feature/v3.1.1
 
 4. Build the application （本地服务器要指定 dbg）
 ```
-$ docker-compose -f Dockerfile.dbg build
+$ docker-compose -f docker-compose-dbg.yml build
 ```
 
 5. Apply Django migrations:

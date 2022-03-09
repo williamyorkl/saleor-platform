@@ -1,7 +1,5 @@
 version: "3.4"
 
-# TODO - 正式环境到时候应该会部署上云服务，配置有待修改
-
 services:
   api:
     ports:
@@ -37,9 +35,9 @@ services:
   storefront:
     build:
       context: ./saleor-storefront
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dbg
     ports:
-      - 80:80
+      - 3000:80 # TODO - 内网穿透后再修改端口
     restart: unless-stopped
     networks:
       - saleor-backend-tier
@@ -51,12 +49,11 @@ services:
   dashboard:
     build:
       context: ./saleor-dashboard
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dbg
     ports:
-      - 80:80
+      - 9000:80  # TODO - 内网穿透后再修改端口
     restart: unless-stopped
     volumes:
-      - ./saleor-dashboard/:/app:cached
       - /app/node_modules/
 
   db:
