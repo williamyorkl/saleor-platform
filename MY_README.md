@@ -65,9 +65,10 @@ $ cd saleor-platform
 $ git checkout feature/v3.1.1
 ```
 
-4. Build the application （本地服务器要指定 dbg）
+4. Build the api application (后端服务)
+> 本地服务器要指定 dbg
 ```
-$ docker-compose -f docker-compose-dbg.yml build
+$ docker-compose -f docker-compose-dbg.yml build api
 ```
 
 5. Apply Django migrations:
@@ -86,8 +87,8 @@ $ docker-compose run --rm api python3 manage.py populatedb --createsuperuser
 ```
 *Note that `--createsuperuser` argument creates an admin account for `admin@example.com` with the password set to `admin`.*
 
-8. Run the application:
+8. Run the application (再起前台服务)
 ```
-$ docker-compose up
+$ docker-compose -f docker-compose-dbg.yml up
 ```
 *Both storefront and dashboard are quite big frontend projects and it might take up to few minutes for them to compile depending on your CPU. If nothing shows up on port 3000 or 9000 wait until `Compiled successfully` shows in the console output.*
