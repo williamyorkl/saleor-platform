@@ -24,6 +24,30 @@ docker-compose build -f ./docker-compose-dbg.yml
 ### 三、关于 Git 的分支管理
 > 因为项目是通过 git 的 submodules 管理，方便了部署，但是增加了一定维护的复杂度
 
+<br/>
+
+#### 关于日常开发
+> 参考：https://www.notion.so/git-merge-submodules-a69c8cd69b724e86ae7573b6b92b362d
+
+
+1. 各自的项目基于当前的版本创建一个分支，如：
+```
+feature/v3.1.1-bugfix1.4.1 
+
+# 其中1.4.1为当前版本周期名称
+```
+
+2. 在新建的分支修改好后，合并到主分支
+
+3. 合并后，注意看最后一个 commit id 是否符合 sumodules文件的记录，如果符合的话，可以直接在父项目提交
+
+
+
+
+
+
+
+#### 关于发版
 1. saleor-platform 上的分支直接正常操作提交即可
 2. saleor-platform 的子分支
    -  在子分支里面提交
@@ -45,6 +69,10 @@ git commit `在父分支记录一个子分支修改`
 git pull
 git update submodules
 ```
+
+
+
+
 
 ### 四、项目启动说明
 
