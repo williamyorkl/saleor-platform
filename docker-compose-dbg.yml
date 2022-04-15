@@ -32,8 +32,8 @@ services:
       - DASHBOARD_URL=http://localhost:9000/
       - ALLOWED_HOSTS=localhost,api,192.168.150.243,192.168.150.120,api.casecasy.com
       - ENABLE_SSL=True
-      # 强制指定图片地址，带 https，不然会用了项目默认的 /media/ + http
-      - MEDIA_URL=https://media.casecasy.com/media/
+      # 指定 cdn 地址
+      - MEDIA_URL=https://media.casecasy.com/app/media/
 
   storefront:
     build:
