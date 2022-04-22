@@ -24,7 +24,7 @@ services:
       - saleor-media:/app/media
     
     # 注释以下 command，启动原来dockerfile.dbg 中的 gunicorn
-    command: python manage.py runserver 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
 
     env_file:
       - common.env
