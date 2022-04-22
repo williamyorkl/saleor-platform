@@ -25,7 +25,7 @@ services:
     
     # 注释以下 command，启动原来dockerfile.dbg 中的 gunicorn
     # command: python manage.py runserver 0.0.0.0:8000
-    
+
     env_file:
       - common.env
       - backend.env
@@ -38,7 +38,7 @@ services:
       # 指定 cdn 地址
       - MEDIA_URL=https://media.casecasy.com/app/media/
       # 调用 /graphql/ 的白名单客户端域
-      - ALLOWED_CLIENT_HOSTS=*.casecasy.com
+      - ALLOWED_CLIENT_HOSTS=*.casecasy.com,192.168.150.243
 
   storefront:
     build:
