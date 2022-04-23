@@ -37,8 +37,8 @@ services:
       - ENABLE_SSL=True
       # 指定 cdn 地址
       - MEDIA_URL=https://media.casecasy.com/app/media/
-      # 调用 /graphql/ 的白名单客户端域
-      - ALLOWED_CLIENT_HOSTS=*.casecasy.com,192.168.150.243
+      # 调用 /graphql/ 的白名单客户端域（经测试有点奇怪不支持通配符*）
+      - ALLOWED_CLIENT_HOSTS=www.casecasy.com,192.168.150.243
 
   storefront:
     build:
